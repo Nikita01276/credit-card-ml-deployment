@@ -38,6 +38,16 @@ curl.exe -X POST "http://localhost:5000/predict?model=v1" \
   -H "Content-Type: application/json" \
   -d '@test_data.json'
 ```
+## Пример ответа
+
+```json
+{
+  "prediction": 1,
+  "probability": 0.7755,
+  "model_version": "v1",
+  "model_type": "LogisticRegression"
+}
+```
 
 ## Структура проекта
 
