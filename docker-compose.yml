@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  # Основной ML-сервис
+  ml-service:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nginx — прокси перед ML-сервисом + имитация сбора логов
+  # В production он принимал бы внешние запросы и передавал их в ml-service
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - ml-service
+    restart: unless-stopped
