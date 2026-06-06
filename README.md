@@ -2,8 +2,8 @@
 ML-сервис для прогнозирования дефолта по кредитным картам
 
 ## Модели
-- **v1** — Logistic Regression (F1 = 0.46)
-- **v2** — Random Forest (F1 = 0.54)
+- **v1** - Logistic Regression (F1 = 0.46)
+- **v2** - Random Forest (F1 = 0.54)
 
 ### Запуск локально
 
