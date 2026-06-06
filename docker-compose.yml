@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   # Основной ML-сервис
   ml-service:
     build: .
@@ -18,8 +17,7 @@ services:
       timeout: 10s
       retries: 3
 
-  # Nginx — прокси перед ML-сервисом + имитация сбора логов
-  # В production он принимал бы внешние запросы и передавал их в ml-service
+  # Nginx - прокси перед ML-сервисом + имитация сбора логов
   nginx:
     image: nginx:alpine
     ports:
